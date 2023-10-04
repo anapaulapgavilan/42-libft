@@ -6,7 +6,7 @@
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:25:54 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/09/21 12:27:57 by ana-pper         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:19:27 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,29 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	j = 0;
 	i = 0;
-	if (len == 0 || needle[j] == '\0')
+	if (needle == NULL || needle[0] == '\0')
 		return ((char *)(haystack));
 	while (haystack[i] != '\0' && i < len)
 	{
-		while ((haystack[i + j] == needle[j] && i + j < len))
+		if (haystack[i] == needle[j])
 		{
-			if (needle[j + 1] == '\0')
+			while ((haystack[i + j] == needle[j]) && (i + j < len))
 			{
-				return ((char *)(haystack + i));
+				if (needle[j + 1] == '\0')
+					return ((char *)(haystack + i));
+				j++;
 			}
-			j++;
+			j = 0;
 		}
 		i++;
 	}
 	return (NULL);
 }
 
+/* no crash]: your strnstr does not segfault when null parameter is sent
+ Test code:
+        ft_strnstr("fake", ((void *)0), 3)
+*/
 /*
 int main()
 {
