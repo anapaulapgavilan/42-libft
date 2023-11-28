@@ -6,7 +6,7 @@
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 09:32:57 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/10/04 10:15:07 by ana-pper         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:10:01 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,23 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t			i;
-	size_t			j;
-	size_t			n;
 	char			*byte_ptr;
 
-	n = ft_strlen(s);
-	if (len > n)
-		len = n;
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	if (start >= ft_strlen(s))
+	{
+		byte_ptr = (char *)malloc(1);
+		if (byte_ptr != NULL)
+			byte_ptr[0] = '\0';
+		return (byte_ptr);
+	}
 	byte_ptr = (char *)malloc((len + 1) * sizeof(char));
 	if (byte_ptr == 0)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			byte_ptr[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	byte_ptr[j] = 0;
+	if (!s)
+		return (NULL);
+	ft_strlcpy(byte_ptr, &s[start], len + 1);
 	return (byte_ptr);
 }
 

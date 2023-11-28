@@ -1,42 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 09:51:14 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/10/25 11:00:42 by ana-pper         ###   ########.fr       */
+/*   Created: 2023/10/14 15:09:12 by ana-pper          #+#    #+#             */
+/*   Updated: 2023/10/15 11:13:16 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else
-	{
-		if (n < 0)
-		{
-			n = n * (-1);
-			write (fd, "-", 1);
-		}
-		if (n > 9)
-		{
-			ft_putnbr_fd(n / 10, fd);
-		}
-		ft_putchar_fd((n % 10) + '0', fd);
-	}
+	if (!lst || !del)
+		return ;
+	del (lst -> content);
+	free (lst);
 }
-
-/*
-int main()
-{
-	ft_putnbr_fd(-147483647, 1);
-	return(0);
-}
-*/

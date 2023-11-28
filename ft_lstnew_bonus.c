@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 10:35:45 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/10/10 12:40:09 by ana-pper         ###   ########.fr       */
+/*   Created: 2023/10/12 13:19:56 by ana-pper          #+#    #+#             */
+/*   Updated: 2023/10/12 15:35:22 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	n;
-	void	*ptr;
+	t_list	*ptr;
 
-	n = count * size;
-	ptr = malloc(n);
-	if (ptr != NULL)
-		ft_memset(ptr, 0, n);
+	ptr = (t_list *)malloc(sizeof (*ptr));
+	if (!(ptr))
+		return (NULL);
+	ptr->content = content;
+	ptr->next = NULL;
 	return (ptr);
 }
 
 /*
-int main(void)
+int main() 
 {
-    int size = 8539;
- 
-    void * d1 = ft_calloc(size, sizeof(int));
-    void * d2 = calloc(size, sizeof(int));
-    if (memcmp(d1, d2, size * sizeof(int)))
-            exit(printf("Failed"));
-    free(d1);
-    free(d2);
-    exit(printf("Success"));
+    char *content = "Ejemplo de contenido";
+    t_list *NewNode = ft_lstnew(content);
+
+    if (NewNode != NULL) {
+        printf("Contenido del nuevo nodo: %s\n", (char *)NewNode->content);
+    } else {
+        printf("Error al crear el nodo.\n");
+    }
+    return 0;
 }
 */

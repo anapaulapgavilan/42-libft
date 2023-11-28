@@ -6,7 +6,7 @@
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:58:49 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/09/27 11:50:07 by ana-pper         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:32:42 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "libft.h"
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_strdup(const char *s1)
 {

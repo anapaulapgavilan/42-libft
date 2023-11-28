@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 10:35:45 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/10/10 12:40:09 by ana-pper         ###   ########.fr       */
+/*   Created: 2023/10/14 14:16:54 by ana-pper          #+#    #+#             */
+/*   Updated: 2023/10/14 14:37:23 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	n;
-	void	*ptr;
-
-	n = count * size;
-	ptr = malloc(n);
-	if (ptr != NULL)
-		ft_memset(ptr, 0, n);
-	return (ptr);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }
 
 /*
-int main(void)
+int main() 
 {
-    int size = 8539;
- 
-    void * d1 = ft_calloc(size, sizeof(int));
-    void * d2 = calloc(size, sizeof(int));
-    if (memcmp(d1, d2, size * sizeof(int)))
-            exit(printf("Failed"));
-    free(d1);
-    free(d2);
-    exit(printf("Success"));
+    t_list *node1 = ft_lstnew("Nodo 1");
+    t_list *node2 = ft_lstnew("Nodo 2");
+    t_list *node3 = ft_lstnew("Nodo 3");
+
+	node1 -> next = node2;
+	node2 -> next = node3;
+	node3 -> next = NULL;
+
+	t_list	*last = ft_lstlast(node1);
+	
+	printf("Last: %s\n", (char *)last -> content);
+	
+    return (0);
 }
 */

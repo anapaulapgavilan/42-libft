@@ -6,7 +6,7 @@
 /*   By: ana-pper <ana-pper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:25:54 by ana-pper          #+#    #+#             */
-/*   Updated: 2023/09/26 10:19:27 by ana-pper         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:16:02 by ana-pper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	j = 0;
 	i = 0;
-	if (needle == NULL || needle[0] == '\0')
-		return ((char *)(haystack));
+	if (needle[0] == '\0')
+	{
+		return ((char *)haystack);
+	}
 	while (haystack[i] != '\0' && i < len)
 	{
 		if (haystack[i] == needle[j])
@@ -40,22 +42,20 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-/* no crash]: your strnstr does not segfault when null parameter is sent
- Test code:
-        ft_strnstr("fake", ((void *)0), 3)
-*/
-/*
-int main()
-{
-    char *src = "hello there";
-    char *search = "lo there";
-    
-    char *result_ft_strnstr = ft_strnstr(src, search, sizeof(src));
-    char *result_strnstr = strnstr(src, search, sizeof(src));
-    
-    printf("Result using ft_strrchr: %s\n", result_ft_strnstr);
-    printf("Result using strnstr: %s\n", result_strnstr);
-    
-    return 0;
-}
-*/
+// int main()
+// {
+//    char *s1 = "oh no not the empty string !";
+// 	char *s2 = "";
+// 	size_t max = strlen(s1);
+// 	char *i1 = strnstr(s1, s2, max);
+// 	char *i2 = ft_strnstr(s1, s2, max);
+
+// 	printf("%s\n", i1);
+// 	printf("%s\n", i2);
+
+// 	if (i1 == i2)
+// 		printf("BIEN");
+// 	else
+// 		printf("MAL");
+//     return 0;
+// }
